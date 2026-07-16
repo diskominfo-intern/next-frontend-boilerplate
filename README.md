@@ -119,6 +119,12 @@ Proyek ini telah dibekali dengan penjaga otomatis agar kualitas kode Anda setara
    Pelindung halaman diletakkan di `src/middleware.ts`. File ini mencegat pengguna di level server sebelum layar sempat dimuat. Jangan letakkan keamanan navigasi (`router.push`) yang sensitif di dalam `useEffect`.
 3. **Graceful Error Handling**
    Jangan takut aplikasi _crash_! Jika komponen meledak, halaman **`src/app/error.tsx`** akan mengambil alih dan menampilkan pesan _error_ elegan tanpa membuat aplikasi mati total.
+4. **Git Commit Convention (Aturan Wajib)**
+   Anda DILARANG keras menulis pesan commit sembarangan (contoh: "update", "fix bug", "bismillah"). Gunakan format **Conventional Commits**:
+   - `feat: [pesan]` ➡️ Untuk menambah fitur baru (contoh: `feat: buat halaman login`).
+   - `fix: [pesan]` ➡️ Untuk memperbaiki _bug_ (contoh: `fix: perbaiki tombol register yang mati`).
+   - `chore: [pesan]` ➡️ Untuk perubahan konfigurasi/alat (contoh: `chore: update versi nextjs`).
+   - `refactor: [pesan]` ➡️ Untuk merapikan kode tanpa mengubah fitur.
 
 ---
 
