@@ -4,7 +4,22 @@
 
 # 🚀 Intern Frontend Handbook (Next.js)
 
-Selamat datang di _Handbook Frontend_ resmi untuk program Internship. Panduan ini tidak hanya menjelaskan folder, tetapi **Buku Manual Lengkap** tentang standar pemrograman Frontend kelas _Enterprise_. Kita menggunakan **Next.js (App Router)**, **Tailwind CSS**, **shadcn/ui**, **Zustand**, dan **React Query**.
+Tujuan utama dari _boilerplate_ ini adalah memberikan contoh struktur antarmuka (_User Interface_) skala _Production_ yang kokoh, sehingga Anda memiliki referensi mutlak tentang bagaimana membangun frontend yang cepat, aman, dan mudah dipelihara.
+
+---
+
+## 🏗️ Cara Menggunakan Template Ini (Untuk Project Baru)
+
+Jika Anda ditugaskan untuk membuat proyek baru berdasarkan kerangka ini, **JANGAN melakukan _clone_ biasa**. Gunakan fitur Template GitHub agar riwayat _commit_ lama tidak ikut terbawa:
+
+1. Di halaman utama repositori GitHub ini, klik tombol hijau bertuliskan **"Use this template"** (di pojok kanan atas).
+2. Pilih **"Create a new repository"**.
+3. Beri nama repositori baru Anda (contoh: `frontend-kasir-app`), lalu klik **Create repository**.
+4. Setelah repositori baru Anda terbuat, silakan di-_clone_ ke komputer lokal Anda:
+   ```bash
+   git clone https://github.com/diskominfo-intern/frontend-kasir-app.git
+   ```
+5. Ubah judul di baris pertama `README.md` ini dengan nama proyek baru Anda, lalu jalankan `npm install`.
 
 ---
 
