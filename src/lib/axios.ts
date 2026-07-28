@@ -1,9 +1,16 @@
 import axios from 'axios';
 import { useAuthStore } from '../store/useAuthStore';
 
+// Otomatis pastikan baseURL selalu mengarah ke prefix /api
+const getBaseUrl = () => {
+  const envUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  const cleanUrl = envUrl.replace(/\/$/, '');
+  return cleanUrl.endsWith('/api') ? cleanUrl : `${cleanUrl}/api`;
+};
+
 // Create an Axios instance
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000',
+  baseURL: getBaseUrl(),
   headers: {
     'Content-Type': 'application/json',
   },
