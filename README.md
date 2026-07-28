@@ -23,6 +23,31 @@ Jika Anda ditugaskan untuk membuat proyek baru berdasarkan kerangka ini, **JANGA
 
 ---
 
+## 🌐 Panduan Deployment ke cPanel Diskominfo (1 Slot Node.js App)
+
+Untuk mempublikasikan (*deploy*) frontend Next.js ini ke cPanel Diskominfo bersama dengan backend NestJS menggunakan **1 Slot Node.js App (Phusion Passenger)** tanpa akses SSH:
+
+1. **Konfigurasi Standalone Mode**:
+   Pastikan file `next.config.ts` sudah menyertakan `output: "standalone"`:
+   ```typescript
+   const nextConfig = {
+     output: "standalone",
+   };
+   ```
+
+2. **Kompilasi Build & Copy Assets**:
+   ```bash
+   npm run build
+   ```
+   Kompilasi standalone akan menghasilkan folder `.next/standalone`.
+   Salin aset statis (`public/*` dan `.next/static/*`) serta file logger [`server-cpanel.js`](../server-cpanel.js) ke dalam folder `.next/standalone`.
+
+3. **1-Click Pack (`deploy-cpanel.tar.gz`)**:
+   Gunakan script otomatis `build-cpanel.sh` / `build-cpanel.ps1` untuk membungkus frontend dan backend sekaligus menjadi 1 file tunggal `deploy-cpanel.tar.gz` yang siap di-upload ke cPanel File Manager.
+   Panduan lengkap dapat dilihat pada repositori blueprint **[how-to-deploy](https://github.com/diskominfo-intern/how-to-deploy)**.
+
+---
+
 ## 📂 1. Panduan Navigasi Direktori
 
 Seluruh kode Anda akan hidup di dalam folder `src/`. Kami menggunakan pola **Feature-Sliced Design (FSD)**, yang artinya kode dikelompokkan berdasarkan **Nama Fitur Bisnis**, BUKAN berdasarkan peran (Admin/User).
