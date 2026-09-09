@@ -1,9 +1,15 @@
 import axios from 'axios';
 import { useAuthStore } from '../store/useAuthStore';
 
-// Otomatis pastikan baseURL selalu mengarah ke prefix /api
+// Otomatis pastikan baseURL selalu mengarah ke relative path /api di browser
 const getBaseUrl = () => {
-  const envUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
+  if (typeof window !== 'undefined') {
+    return '/api';
+  }
+  const envUrl = process.env.NEXT_PUBLIC_API_URL || '';
+  if (!envUrl || envUrl.includes('localhost')) {
+    return '/api';
+  }
   const cleanUrl = envUrl.replace(/\/$/, '');
   return cleanUrl.endsWith('/api') ? cleanUrl : `${cleanUrl}/api`;
 };
@@ -16,9 +22,12 @@ const api = axios.create({
   },
 });
 
-// Request interceptor to attach JWT token
+// Request interceptor to attach JWT token & enforce browser relative path
 api.interceptors.request.use(
   (config) => {
+    if (typeof window !== 'undefined') {
+      config.baseURL = '/api';
+    }
     const token = useAuthStore.getState().token;
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -37,7 +46,10 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       // Auto logout if token is expired
       useAuthStore.getState().logout();
-      window.location.href = '/login';
+      // Cegah reload loop jika user sudah di halaman login
+      if (typeof window !== 'undefined' && !window.location.pathname.startsWith('/login')) {
+        window.location.href = '/login';
+      }
     }
     return Promise.reject(error);
   }
