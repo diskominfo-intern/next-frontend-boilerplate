@@ -1,0 +1,11 @@
+# ==============================================================================
+# CODEOWNERS - NEXT-FRONTEND-BOILERPLATE
+# ==============================================================================
+# File konfigurasi dasar & networking berikut dilindungi dan HANYA boleh diubah
+# atas persetujuan dari Lead Deployment / Maintainer: @PangeranJJ4321
+# ==============================================================================
+
+/src/lib/axios.ts         @PangeranJJ4321
+/package.json             @PangeranJJ4321
+/next.config.ts           @PangeranJJ4321
+/.env.example             @PangeranJJ4321

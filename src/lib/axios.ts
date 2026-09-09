@@ -1,3 +1,21 @@
+/**
+ * ==============================================================================
+ * ?? PERINGATAN KERAS / BACA SEBELUM MENGUBAH FILE INI! ??
+ * ==============================================================================
+ * File ini mengatur konfigurasi Axios HTTP Client & Interceptor Global.
+ * Pemilik / Maintainer: @PangeranJJ4321
+ *
+ * ATURAN MUTLAK:
+ * 1. DILARANG MENG-HARDCODE baseURL ke "http://localhost:3000"!
+ *    Di browser klien, baseURL WAJIB menggunakan relative path "/api".
+ *    Gateway cPanel yang akan me-reverse-proxy request /api tersebut ke backend.
+ *    Jika Anda hardcode ke localhost, aplikasi akan GAGAL TOTAL saat diakses publik!
+ *
+ * 2. DILARANG MENGHAPUS proteksi loop redirect 401 pada response interceptor.
+ *    Jika user sudah berada di halaman "/login", jangan panggil redirect lagi
+ *    agar browser tidak mengalami infinite reload loop.
+ * ==============================================================================
+ */
 import axios from 'axios';
 import { useAuthStore } from '../store/useAuthStore';
 
@@ -56,3 +74,4 @@ api.interceptors.response.use(
 );
 
 export default api;
+
